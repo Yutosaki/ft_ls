@@ -8,14 +8,19 @@
 #define FOUND 0
 #define NOT_FOUND 1
 
-int main() {
-    /* int main(int argc, char **argv) { */
+/* int main() { */
+int main(int argc, char **argv) {
     // 引数の数などのエラーハンドリング
     // pathの構築 opendirでdir領域へのポインタを取得して、raeddirで読み込む
     DIR *dirp;
     // Sample code which searches a directory for entry ``name'' is:
 
-    dirp = opendir(".");
+    if (argc == 1) {
+        dirp = opendir(".");
+    } else {
+        dirp = opendir(argv[1]);
+    }
+
     if (dirp == NULL) {
         return (ERROR);
     }
