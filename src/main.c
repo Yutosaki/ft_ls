@@ -23,7 +23,6 @@ int main() {
     struct dirent *dp;
     while ((dp = readdir(dirp)) != NULL) {
         // .fileを表示しない方がいいかも
-        /* printf("%s\n", &dp->d_name); */
         write(1, dp->d_name, strlen(dp->d_name));
         write(1, "  ", 2);
     }
