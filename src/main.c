@@ -22,7 +22,9 @@ int main() {
 
     struct dirent *dp;
     while ((dp = readdir(dirp)) != NULL) {
-        // .fileを表示しない方がいいかも
+        if (dp->d_name[0] == '.') {
+            continue;
+        }
         write(1, dp->d_name, strlen(dp->d_name));
         write(1, "  ", 2);
     }
